@@ -1,7 +1,9 @@
-FROM php:7
+FROM php:7.2
 
 RUN apt-get update && apt-get install -y libmcrypt-dev mysql-client \
-    && docker-php-ext-install mcrypt pdo_mysql
+    && pecl install mcrypt-1.0.1 \
+    && docker-php-ext-install iconv pdo_mysql \
+    && docker-php-ext-enable mcrypt
 
 WORKDIR /var/www
 CMD ["/bin/sh", "./docker/queue.sh"]

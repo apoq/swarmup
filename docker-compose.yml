@@ -46,3 +46,19 @@ services:
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=database"
+    geth:
+        build:
+            context: ./
+            dockerfile: deploy/geth.docker
+        volumes:
+            - ./data/ethereum:/root/.ethereum
+    swarm:
+        build:
+            context: ./
+            dockerfile: deploy/swarm.docker
+        volumes:
+            - ./data/ethereum:/root/.ethereum
+        links:
+            - geth
+        ports:
+            - "8500:8500"    
