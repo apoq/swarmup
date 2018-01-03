@@ -1,4 +1,4 @@
-# SWARMUP application
+# SWARMUP application (in progress)
 
 containers:
  - web
