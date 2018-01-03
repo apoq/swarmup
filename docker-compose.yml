@@ -19,6 +19,7 @@ services:
         links:
             - database
             - cache
+            - swarm
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=database"
